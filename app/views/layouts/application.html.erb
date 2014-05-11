@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>BloggingApp</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+  <div class="container">
+    <h1>Blogging App</h1>
+
+    <%= flash[:notice] %>
+    <%= flash[:alert] %>
+    <%= yield %>
+
+    <div class="page-footer">
+      <hr>
+      <p class="pull-right">
+        <%= link_to "New Article", new_article_path %>
+      </p>
+    </div>
+  </div>
+
+
+</body>
+</html>

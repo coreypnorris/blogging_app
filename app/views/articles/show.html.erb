@@ -1,0 +1,22 @@
+<div class='row'>
+  <ol class='breadcrumb'>
+    <li><%= link_to "Home", root_url %></li>
+    <li class="active"><%= @article.name %></li>
+  </ol>
+</div>
+
+<div class="page-header">
+  <h1><%= @article.name %></h1>
+</div>
+
+<div class='row'>
+  <div class='col-sm-12'>
+    <p><%= @article.content %></p>
+  </div>
+</div>
+
+<%= link_to "Edit", edit_article_path, :class => "btn btn-sm btn-warning" %>
+<%= link_to "Delete", article_path(@article),
+                      data: { :confirm => "Sure you want to delete?" },
+                      :method => "delete",
+                      :class => "btn btn-sm btn-danger" %>

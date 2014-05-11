@@ -1,0 +1,17 @@
+<div class='row'>
+  <ol class='breadcrumb'>
+    <li class='active'>Articles</li>
+  </ol>
+</div>
+
+<div class='row'>
+  <div class='col-sm-12'>
+    <ul class="list-unstyled">
+      <% @articles.each do |article| %>
+        <li><%= link_to "#{article.name}", article_path(article) %></li>
+        <p><%= article.content %></p>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
