@@ -11,10 +11,13 @@
 
   <div class="container">
     <h1>Blogging App</h1>
-
-    <%= flash[:notice] %>
-    <%= flash[:alert] %>
-    <%= yield %>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= flash[:notice] %>
+        <%= flash[:alert] %>
+        <%= yield %>
+      </div>
+    </div>
 
     <div class="page-footer">
       <hr>
