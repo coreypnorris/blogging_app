@@ -10,11 +10,27 @@
 
 
   <div class="container">
-    <h1>Blogging App</h1>
+    <div class="row">
+      <div class="col-sm-6">
+        <h1>Blogging App</h1>
+      </div>
+      <div class="col-sm-6" id="user-nav">
+        <% if user_signed_in? %>
+          <p class="pull-right">Logged in as <strong><%= current_user.email %></strong>.
+          <%= link_to 'Edit profile', edit_user_registration_path %> |
+          <%= link_to "Logout", destroy_user_session_path, method: :delete %></p>
+        <% else %>
+          <p class="pull-right"><%= link_to "Sign up", new_user_registration_path %> |
+          <%= link_to "Login", new_user_session_path %></p>
+        <% end %>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-sm-12">
-        <%= flash[:notice] %>
-        <%= flash[:alert] %>
+        <% flash.each do |name, msg| %>
+          <%= content_tag :div, msg, id: "flash_#{name}" %>
+        <% end %>
         <%= yield %>
       </div>
     </div>
@@ -22,7 +38,9 @@
     <div class="page-footer">
       <hr>
       <p class="pull-right">
-        <%= link_to "New Article", new_article_path %>
+        <% if user_signed_in? %>
+          <%= link_to "New Article", new_article_path %>
+        <% end %>
       </p>
     </div>
   </div>
